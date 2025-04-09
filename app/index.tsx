@@ -36,20 +36,45 @@ export default function home(){
         <View style={Estilos.icon}>
           <Image 
           source={require('../assets/images/Bag.svg')}/>
+          <View style={Estilos.conatador}>
+            <Text
+            style={{fontFamily:'Regular', color:'#fff', fontSize:13}}
+            >2</Text>
+          </View>
         </View>
       </View>
 
-      <View>
+      <View style={Estilos.boxInput}>
         <TextInput
-        style={Estilos.input}
+        style={[Estilos.input, {outline:0}]}
         placeholder="Search"
          />
          <View style={Estilos.imageSearch}>
             <Image source={require('../assets/images/Search.svg')} />
          </View>
       </View>
-      <View>
-        imagemPromo
+      <View style={Estilos.containerImgPromo}>
+        <View style={Estilos.boxImgPromo}>
+          <View style={{gap:10}}>
+           <Text style={Estilos.textPromo}>Hoje é um bom dia!</Text>
+            <Text style={Estilos.textPromo}>Entrega grátis, taxas mais <br />baixas 
+            e 10% de cashback <br /> na retirada!</Text> 
+          </View>
+          <View style={Estilos.ImgPromo}>
+            <Image source={require('../assets/images/imgPromo.svg')}/>
+          </View>
+            
+            {/*botão peça agr */}
+            <View style={Estilos.buttonOrder}>
+              <Text style={{fontFamily:'Bold'}}>
+                Peça agora
+              </Text>
+            </View>
+            {/*categorias */}
+            <View>
+
+            </View>
+        </View>
       </View>
 
       <View>
