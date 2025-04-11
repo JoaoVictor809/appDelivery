@@ -94,5 +94,12 @@ export default StyleSheet.create({
         justifyContent:'space-between',
         display:'flex',
         flexDirection:'row'
+    },
+    containerMain:{
+        width:'80%',
+        alignItems:'baseline',
+        justifyContent:'space-between',
+        display:'flex',
+        flexDirection:'row'
     }
 })

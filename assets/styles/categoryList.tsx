@@ -2,23 +2,23 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     containerCategory:{
-        width:100,
+        width:'auto',
         height:40,
         borderRadius:30,
         backgroundColor:'#E6E6E8',
         display:'flex',
         flexDirection:'row',
         alignItems:'center',
-        justifyContent:'space-between'
+        justifyContent:'space-around',
+        marginRight: 16, 
     },
     imgCategory:{
-        width:'40%',
+        width:40,
         height:40,
         backgroundColor:'#F55906',
-        borderRadius:100
+        borderRadius:100, 
     },
     container:{
-        padding:8,
-        margin: 10,
+        paddingLeft:30,
     },
 })

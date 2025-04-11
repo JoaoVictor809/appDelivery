@@ -5,6 +5,7 @@ import { useFonts } from "expo-font";
 import Estilos from '../assets/styles/home';
 import Icon from 'react-native-vector-icons/FontAwesome6';  
 import CategoryList from '@/components/categoryList';
+import ForYou from '../components/forYou'
 
 export default function Home() {
   const [fontsLoaded] = useFonts({
@@ -24,8 +25,10 @@ export default function Home() {
   }
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <SafeAreaView style={{flex:1, width:'100%', backgroundColor:'#fff', gap:15}}>
+    <ScrollView
+    style={{flex:1, width:'100%', backgroundColor:'#fff', gap:15}}
+     showsVerticalScrollIndicator={false}>
+      <SafeAreaView style={{display:'flex', gap:20}}>
 
         <View style={Estilos.header}>
           <View>
@@ -84,11 +87,17 @@ export default function Home() {
             style={{fontFamily:'Regular', color:'#64646A'}}
             >See All</Text>
           </View>
-          <CategoryList />
+          
         </View>
-        <View>
-          <Text>Comidas</Text>
+        <CategoryList />
+        <View style={{width:'100%', alignItems:'center'}}>
+          <View style={Estilos.containerMain}>
+          <Text
+          style={{fontFamily:'Bold', fontSize:20}}
+          >Comidas para você 🔥</Text>
+          </View>
         </View>
+        <ForYou/>
       </SafeAreaView>
     </ScrollView>
   );
