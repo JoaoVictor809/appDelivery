@@ -81,5 +81,18 @@ export default StyleSheet.create({
         position:'absolute',
         top:0,
         right:0
+    },
+    boxLoc:{
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        gap:10,
+    },
+    boxCategory:{
+        width:'80%',
+        alignItems:'baseline',
+        justifyContent:'space-between',
+        display:'flex',
+        flexDirection:'row'
     }
 })
