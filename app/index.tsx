@@ -6,8 +6,14 @@ import Estilos from '../assets/styles/home';
 import Icon from 'react-native-vector-icons/FontAwesome6';  
 import CategoryList from '@/components/categoryList';
 import ForYou from '../components/forYou'
+import { useGetData } from '../services/hooks/useGetData'
+import Loader from '../components/loader'
 
 export default function Home() {
+  const {getFood} =useGetData()
+  const [loading, setLoading] = useState(true)
+  const [food, setFood] = useState([])
+
   const [fontsLoaded] = useFonts({
     'Regular': require('../assets/fonts/Poppins-Regular.ttf'),
     'Bold': require('../assets/fonts/Poppins-Bold.ttf'),
@@ -22,6 +28,28 @@ export default function Home() {
 
   if (!fontsLoaded) {
     return null;
+  }
+
+  //chamando
+  const callGetData = async () => {
+    const foodResponse = await getFood()
+
+    if(!foodResponse.error){
+      setFood(foodResponse)
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    callGetData()
+  }, [])
+
+  if (loading) {
+    return (
+      <View>
+        <Loader />
+      </View>
+    )
   }
 
   return (
@@ -97,7 +125,7 @@ export default function Home() {
           >Comidas para você 🔥</Text>
           </View>
         </View>
-        <ForYou/>
+        <ForYou data={food} />
       </SafeAreaView>
     </ScrollView>
   );

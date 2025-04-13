@@ -1,50 +1,83 @@
-import { Text, View, FlatList, Image } from 'react-native';
-import React, { useEffect } from 'react';
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
+import React from 'react';
+import { View, FlatList, Text, Image, Pressable, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome6';
 import Styles from '../assets/styles/forYouStyle';
-import Icon from 'react-native-vector-icons/FontAwesome6'; 
+import { useRouter } from "expo-router";
 
-export default function forYou(){
-    const [fontsLoaded] = useFonts({
-        'Poppins_Regular': require('../assets/fonts/Poppins-Regular.ttf'),
-        'Poppins_Bold': require('../assets/fonts/Poppins-Bold.ttf')
+type FoodItem = {
+  idCategory: string;
+  strCategory: string;
+  strCategoryThumb: string;
+  strCategoryDescription: string;
+};
+
+type ForYouProps = {
+  data: FoodItem[];
+};
+
+export default function ForYou({ data }: ForYouProps) {
+  const router = useRouter();
+
+  const handlePress = (item: FoodItem) => {
+
+    if (!item.idCategory || !item.strCategory) {
+        console.error("ERRO: idCategory ou strCategory está faltando ou é inválido no 'item' antes de enviar!");
+        return;
+    }
+
+    
+    try {
+      router.push({
+        pathname: '/detail', // <--- Passado diretamente como literal
+        params: {
+          id: item.idCategory,
+          name: item.strCategory,
+          thumb: item.strCategoryThumb,
+          description: item.strCategoryDescription,
+        },
       });
-    
-      useEffect(() => {
-        if (fontsLoaded) {
-          SplashScreen.hideAsync();
-        }
-      }, [fontsLoaded]);
-    
-      if (!fontsLoaded) {
-        return null;
-      }
-    return(
-        <View style={Styles.containerForYou}>
-            <View style={Styles.boxImgFotYou}>
-                <Image
-                style={Styles.imgForYou001} 
-                source={require('../assets/images/imgForYou001.jpg')} />
-            </View>
-            <View style={Styles.containerTitle}>
-                <View>
-                    <Text>
-                        Taco Bell
-                    </Text>
-                    <View>
-                    <Icon name="clock" solid size={13} color={'#64646A'} />
-                        <Text>                  
-                            25  min • Leve • De Tia Max 
-                        </Text>
-                    </View>
+      console.log("[forYou.tsx] Navegação para '/detail' iniciada com sucesso.");
+    } catch (error) {
+      console.error("!!! [forYou.tsx] Erro ao tentar executar router.push:", error);
+    }
+  };
 
-                </View>
-                
-                <View style={Styles.buttonGo}>
-                    <Icon name='arrow-right' solid size={16} color={'#fff'}/>
-                </View>
-            </View>
+  const renderItem = ({ item }: { item: FoodItem }) => (
+    <View style={Styles.containerForYou}>
+      <View style={Styles.boxImgFotYou}>
+        <Image
+          style={Styles.imgForYou001}
+          source={{ uri: item.strCategoryThumb }}
+          resizeMode="cover"
+        />
+      </View>
+      <View style={Styles.containerTitle}>
+        <View>
+          <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{item.strCategory}</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Icon name="clock" solid size={13} color={'#64646A'} />
+            <Text style={{ color: '#64646A' }}>
+              25 min • Leve • By Max
+            </Text>
+          </View>
         </View>
-    );
+        <Pressable onPress={() => handlePress(item)} hitSlop={10}>
+          <View style={Styles.buttonGo}>
+            <Icon name="arrow-right" solid size={16} color={'#fff'} />
+          </View>
+        </Pressable>
+      </View>
+    </View>
+  );
+
+  return (
+    <FlatList
+      data={data}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.idCategory}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={{ paddingHorizontal: 20, paddingVertical: 10 }}
+    />
+  );
 }
