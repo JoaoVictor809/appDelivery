@@ -1,6 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
-import { useLocalSearchParams, Stack } from 'expo-router'; // Hooks do Expo Router
+import { useLocalSearchParams, Stack } from 'expo-router'; 
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import Icon from 'react-native-vector-icons/FontAwesome6';
+import styles from '../assets/styles/detail'
 
 export default function Detail() {
     // Hook para pegar os parâmetros passados pela URL/navegação
@@ -9,6 +13,24 @@ export default function Detail() {
     const name = params.name as string;
     const thumb = params.thumb as string;
     const description = params.description as string;
+
+    //fontes
+    const [fontsLoaded] = useFonts({
+        'Regular': require('../assets/fonts/Poppins-Regular.ttf'),
+        'Bold': require('../assets/fonts/Poppins-Bold.ttf'),
+        'SemiBold': require('../assets/fonts/Poppins-SemiBold.ttf')
+      });
+    
+      useEffect(() => {
+        if (fontsLoaded) {
+            SplashScreen.hideAsync();
+        }
+      }, [fontsLoaded]);
+    
+      if (!fontsLoaded) {
+        return null;
+      }
+    
 
    
     // --- FIM DA DEPURAÇÃO: Verificando valores extraídos ---
@@ -31,8 +53,7 @@ export default function Detail() {
              {/* Configura o título da tela no cabeçalho usando o nome recebido */}
              <Stack.Screen options={{ title: name || 'Detalhes' }} />
 
-            {/* Exibe o nome do item */}
-            <Text style={styles.title}>{name}</Text>
+            
 
             {/* Exibe a imagem se a URL (thumb) existir */}
             {thumb ? (
@@ -43,6 +64,39 @@ export default function Detail() {
                     <Text>Sem imagem</Text>
                 </View>
             )}
+
+            <View>
+                {/*titulo do produto */}
+                <View style={styles.boxTitle}>
+                    <View>
+                    <Text style={styles.title}>{name}</Text>
+                    <Text style={styles.titleFrom}>By Mc Favela</Text>
+                    </View>
+                    <View style={styles.boxStar}>
+                        <Icon name='star' solid size={15} color={'#F55906'}/>
+                        <Text style={styles.textStar}>4.7</Text>
+                    </View>
+                </View>
+                {/*vendedor */}
+                <View style={styles.containerSeller}>
+                    <View style={styles.boxInfSeller}>
+                        <Image 
+                        style={styles.seller}
+                        source={require('../assets/images/seller.jpg')} />
+                        <View>
+                            <Text style={styles.textSeller}>Bruno Cardoso</Text>
+                            <Text style={styles.idSeller}>ID: 13226525</Text>
+                        </View>
+                    </View>
+                    {/*icones*/}
+                    <View>
+                        <View>
+                            <Icon name='message' solid size={15} color={'#000'} />
+                        </View>
+                    </View>
+                </View>
+            </View>
+           
 
             {/* Seção da Descrição */}
             <Text style={styles.descriptionTitle}>Descrição:</Text>
@@ -60,70 +114,3 @@ export default function Detail() {
     );
 }
 
-// Estilos para a tela de Detalhes
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-    },
-    contentContainer: {
-        padding: 20,
-        paddingBottom: 40, // Espaço extra no final
-    },
-    centered: { // Estilo para centralizar conteúdo (usado na tela de erro)
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20,
-    },
-    title: {
-        fontSize: 28,
-        fontWeight: 'bold',
-        marginBottom: 15,
-        textAlign: 'center',
-        color: '#333',
-    },
-    image: {
-        width: '100%',
-        aspectRatio: 16 / 9, // Proporção comum para imagens
-        height: undefined,   // Deixa a altura ser calculada pela aspectRatio
-        borderRadius: 10,
-        marginBottom: 20,
-        backgroundColor: '#eee', // Cor de fundo enquanto carrega ou se não houver imagem
-    },
-    placeholderImage: {
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    descriptionTitle: {
-        fontSize: 20,
-        fontWeight: '600', // SemiBold
-        marginBottom: 8,
-        color: '#444',
-    },
-    descriptionText: {
-        fontSize: 16,
-        lineHeight: 24,
-        color: '#666',
-        marginBottom: 20,
-    },
-    idText: {
-        fontSize: 14,
-        color: '#888',
-        marginTop: 10,
-        fontStyle: 'italic',
-    },
-    errorText: {
-        fontSize: 18,
-        color: 'red',
-        textAlign: 'center',
-        fontWeight: 'bold',
-        marginBottom: 10,
-    },
-    debugText: { // Estilo para texto de depuração na tela de erro
-        fontSize: 12,
-        color: '#555',
-        marginTop: 15,
-        textAlign: 'center',
-    }
-});
