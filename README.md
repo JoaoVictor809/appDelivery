@@ -33,11 +33,11 @@ npm -v # Should print "10.9.2"
    ```
 
    ## Construído com 🛠️
-   * [Axios]((https://axios-http.com/docs/intro)) - O framework de requisições HTTP
-   * [Expo]((https://docs.expo.dev/)) - Framework que facilita o desenvolvimento de aplicativos
-   * [Lottie]((https://lottiefiles.com/)) - Biblioteca de animações utilizada no app
-   * [FontAwesome6]((https://fontawesome.com/v6/icons)) -Biblioteca de ícones
-   * [React-Native]((https://reactnative.dev/docs/getting-started)) - Framework de código aberto para apps móveis
+   * [Axios](https://axios-http.com/docs/intro) - O framework de requisições HTTP
+   * [Expo](https://docs.expo.dev/) - Framework que facilita o desenvolvimento de aplicativos
+   * [Lottie](https://lottiefiles.com/) - Biblioteca de animações utilizada no app
+   * [FontAwesome6](https://fontawesome.com/v6/icons) -Biblioteca de ícones
+   * [React-Native](https://reactnative.dev/docs/getting-started) - Framework de código aberto para apps móveis
 
   ## Autores ✒️
-  *[João Victor]((https://github.com/JoaoVictor809))
+  *[João Victor](https://github.com/JoaoVictor809)
