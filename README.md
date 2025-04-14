@@ -40,4 +40,4 @@ npm -v # Should print "10.9.2"
    * [React-Native](https://reactnative.dev/docs/getting-started) - Framework de código aberto para apps móveis
 
   ## Autores ✒️
-  *[João Victor](https://github.com/JoaoVictor809)
+   * [João Victor](https://github.com/JoaoVictor809)
