@@ -1,5 +1,6 @@
 # app Delivery 
-![Image](https://github.com/user-attachments/assets/d54d8cd1-6b47-496b-a379-9d02282e6fe4) ![Image](https://github.com/user-attachments/assets/37ffa3c3-4be4-42ba-af2e-bdc11d61ce18)
+![Image](https://github.com/user-attachments/assets/d54d8cd1-6b47-496b-a379-9d02282e6fe4)     ![Image](https://github.com/user-attachments/assets/37ffa3c3-4be4-42ba-af2e-bdc11d61ce18)
+ 
 Este projeto consiste em um aplicativo de delivery com foco educacional no consumo de APIs. O app utiliza a API pública TheMealDB, especificamente o endpoint /categories.php, para obter uma lista de categorias de comidas. A requisição é feita com o framework Axios. As informações retornadas pela API — como título, imagem e descrição de cada item — são exibidas na interface do app.
 
 O projeto foi desenvolvido em React Native com suporte ao Expo, priorizando boas práticas de organização de componentes, carregamento de fontes personalizadas e navegação entre telas, incluindo uma tela de detalhes que apresenta mais informações sobre o prato selecionado.
