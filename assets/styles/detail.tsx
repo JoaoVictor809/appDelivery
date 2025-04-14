@@ -6,9 +6,16 @@ export default StyleSheet.create({
         backgroundColor: '#fff',
     },
     contentContainer: {
-         // Espaço extra no final
+         
     },
-    centered: { // Estilo para centralizar conteúdo (usado na tela de erro)
+    containerMain:{
+      width:'100%',
+      justifyContent:'center',
+      alignItems:'center',
+      gap:10,
+      paddingBottom:10
+    },
+    centered: { 
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -20,11 +27,11 @@ export default StyleSheet.create({
     },
     image: {
         width: '100%',
-        aspectRatio: 16 / 9, // Proporção comum para imagens
-        height: undefined,   // Deixa a altura ser calculada pela aspectRatio
+        aspectRatio: 16 / 9, 
+        height: undefined,   
         borderRadius: 10,
         marginBottom: 20,
-        backgroundColor: '#eee', // Cor de fundo enquanto carrega ou se não houver imagem
+        backgroundColor: '#eee',
     },
     placeholderImage: {
         justifyContent: 'center',
@@ -32,10 +39,10 @@ export default StyleSheet.create({
     },
     boxTitle:{
         display:'flex',
-        width:'100%',
+        width:'90%',
         flexDirection:'row',
         justifyContent:'space-between',
-        padding:10,
+        
         alignItems:'flex-end'
     },
     titleFrom:{
@@ -52,8 +59,11 @@ export default StyleSheet.create({
         color:'#000'
     },
     containerSeller:{
+        width:'90%',
         display:'flex',
-        flexDirection:'row'
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-between'
     },
     boxInfSeller:{
         display:'flex',
@@ -74,35 +84,110 @@ export default StyleSheet.create({
         fontFamily:'Regular',
         color:'#64646A'
     },
-    descriptionTitle: {
-        fontSize: 20,
-        fontWeight: '600', // SemiBold
-        marginBottom: 8,
-        color: '#444',
+    containerIcon:{
+        display:'flex',
+        flexDirection:'row',
+        gap:15
     },
-    descriptionText: {
-        fontSize: 16,
-        lineHeight: 24,
-        color: '#666',
-        marginBottom: 20,
+    boxIcon:{
+        width:40,
+        height:40,
+        backgroundColor:'#E6E6E8',
+        alignItems:'center',
+        justifyContent:'center',
+        borderRadius:100
     },
-    idText: {
-        fontSize: 14,
-        color: '#888',
-        marginTop: 10,
-        fontStyle: 'italic',
+    containerDesc:{
+        width:'90%',
+        display:'flex',
+        flexDirection:'column',
+        alignItems:'baseline',
+        gap:10
     },
-    errorText: {
-        fontSize: 18,
-        color: 'red',
-        textAlign: 'center',
-        fontWeight: 'bold',
-        marginBottom: 10,
+    titleDesc:{
+        fontFamily:'Bold',
+        fontSize:20
     },
-    debugText: { // Estilo para texto de depuração na tela de erro
-        fontSize: 12,
-        color: '#555',
-        marginTop: 15,
-        textAlign: 'center',
+    textDsec:{
+        fontFamily:'Regular',
+        color:'#64646A',
+        textAlign:'justify'
+    },
+    conatinerInf:{
+        width:'90%',
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        gap:10
+    },
+    boxInf:{
+        width:"46%",
+        height:80,
+        backgroundColor:'#E6E6E8',
+        borderRadius:20,
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-around'
+    },
+    boxIconInf:{
+        width:40,
+        height:40,
+        backgroundColor:'#F7F6F9',
+        alignItems:'center',
+        justifyContent:'center',
+        borderRadius:100
+    },
+    textInf:{
+        fontFamily:'Regular',
+        fontSize:14,
+        color:'#64646A'
+    },
+    timeInf:{
+        fontFamily:'Bold'
+    },
+    containerBuy:{
+        width:'90%',
+        height:60,
+        backgroundColor:'#F55906',
+        borderRadius:100,
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-between',
+        paddingRight:3,
+        paddingLeft:20,
+        
+    },
+    boxBuy:{
+        width:'40%',
+        height:'90%',
+        backgroundColor:'#fff',
+        borderRadius:100,
+        alignItems:'center',
+        justifyContent:'center',
+    },
+    textPrice:{
+        fontFamily:'Regular',
+        color:'#fff'
+    },
+    textAdd:{
+        fontFamily:'Bold',
+        fontSize:15
+    },
+    back:{
+        width:40,
+        height:40,
+        backgroundColor:'#fff',
+        borderRadius:100,
+        alignItems:'center',
+        justifyContent:'center',
+       
+    },
+    boxBack:{
+        position:'absolute',
+        zIndex:1,
+        top:10,
+        left:15
     }
 });

@@ -28,7 +28,7 @@ export default function ForYou({ data }: ForYouProps) {
     
     try {
       router.push({
-        pathname: '/detail', // <--- Passado diretamente como literal
+        pathname: '/detail', 
         params: {
           id: item.idCategory,
           name: item.strCategory,
