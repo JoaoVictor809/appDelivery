@@ -61,7 +61,7 @@ export default function Home() {
         <View style={Estilos.header}>
           <View>
             <View style={Estilos.boxLoc}>
-              <Icon name="location-dot" size={13} color={'#000'} /> {/* Icone sendo exibido aqui */}
+              <Icon name="location-dot" size={13} color={'#000'} /> 
             <Text style={{fontFamily:'Regular'}}>
               Localização
             </Text>
